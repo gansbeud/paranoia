@@ -21,7 +21,7 @@ os.system("clear")
 os.system("Unch Unch Paranoia")
 print
 print("Author   : Ngabbers"
-pr)int
+print
 ip = raw_input("IP : ")
 port = input("Port       : ")
 
