@@ -20,8 +20,8 @@ bytes = random._urandom(1490)
 os.system("clear")
 os.system("Unch Unch Paranoia")
 print
-print "Author   : Ngabbers"
-print
+print("Author   : Ngabbers"
+pr)int
 ip = raw_input("IP : ")
 port = input("Port       : ")
 
