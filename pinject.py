@@ -234,10 +234,10 @@ def main():
     else:
         src_host = options.src
 
-    print("[+] Local Machine: %s"%src_host)
-    print("[+] Remote Machine: %s"%dst_host)
+    print(("[+] Local Machine: %s"%src_host))
+    print(("[+] Remote Machine: %s"%dst_host))
     data = "TEST!!"
-    print("[+] Data to inject: %s"%data)
+    print(("[+] Data to inject: %s"%data))
     # IP Header
     ipobj = IP(src_host, dst_host)
     # TCP Header
@@ -247,8 +247,8 @@ def main():
         ip = ipobj.unpack(response)
         response = response[ip.ihl:]
         tcp = tcpobj.unpack(response)
-        print "IP Header:", ip.list
-        print "TCP Header:", tcp.list
+        print("IP Header:", ip.list)
+        print("TCP Header:", tcp.list)
 
 if __name__=="__main__":
     main()
